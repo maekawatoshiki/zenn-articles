@@ -3,7 +3,7 @@ title: "自作コンパイラ基盤の話"
 emoji: "📝"
 type: "idea"
 topics: ["compiler"]
-published: true
+published: false
 ---
 
 :::message
