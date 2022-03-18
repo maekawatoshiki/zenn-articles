@@ -23,7 +23,7 @@ title: "準備"
 このとき、制御フローによっては生存区間が複数に分割されることがあります。（画像では `%a` が該当）
 これら区間の一つひとつは `Segment` と呼ばれています。つまり、生存区間（`LiveRange`）は`Segment`のリストです。
 
-![live range](/images/liverange.png)
+![live range](https://storage.googleapis.com/zenn-user-upload/b6cf57e6049d-20220318.png)
 
 ### `LiveInterval` クラス
 
