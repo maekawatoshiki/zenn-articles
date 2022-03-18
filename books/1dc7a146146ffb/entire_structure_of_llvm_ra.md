@@ -15,7 +15,7 @@ title: "準備"
 [`LiveInterval.h`](https://github.com/llvm/llvm-project/blob/112aafcaf425dca901690ca823d25607e5795263/llvm/include/llvm/CodeGen/LiveInterval.h#L157)に定義されており、あるレジスタやスタックスロットの生存区間を表現します。
 そもそも生存区間が何なのかは、以下の画像を見ればわかると思います。
 
-基本ブロックを一列に並べたとき、ある値が定義されてから最後に使われるまでが生存区間です。
+基本ブロックを一列に並べたとき、ある値が定義されてから最後に使われるまでの区間が生存区間です。
 このとき、制御フローによっては生存区間が複数に分割されることがあります。（画像では `%a` が該当）
 これら区間の一つひとつは `Segment` と呼ばれています。つまり、生存区間（`LiveRange`）は`Segment`のリストです。
 
@@ -23,7 +23,7 @@ title: "準備"
 
 # `SlotIndex` クラス
 
-[`SlotIndexes.h`](https://github.com/llvm/llvm-project/blob/6ffb3ad631c5071ce82c8b6c73dd1c88e0452944/llvm/include/llvm/CodeGen/SlotIndexes.h#L82) に定義されており、`Segment` の開始・終了点を表します。（本当はもうちょっと複雑ですが、今はこのくらいの理解で十分です）
+[`SlotIndexes.h`](https://github.com/llvm/llvm-project/blob/6ffb3ad631c5071ce82c8b6c73dd1c88e0452944/llvm/include/llvm/CodeGen/SlotIndexes.h#L82) に定義されており、`Segment` の開始・終了点（i.e. program point）を表します。（本当はもうちょっと複雑ですが、今はこのくらいの理解で十分です）
 
 # `LiveInterval` クラス
 
