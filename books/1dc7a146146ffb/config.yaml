@@ -1,5 +1,5 @@
-title: "LLVMのレジスタアロケータについてまとめた"
-summary: "LLVMのレジスタアロケータがどのように動作するのかを解説します"
+title: "LLVMのレジスタアロケータについて"
+summary: "LLVMのレジスタアロケータがどのように動作するのかを解説します。ゆっくり更新中。"
 topics: ["llvm", "compiler"]
 published: true
 price: 0 # 有料の場合200〜5000

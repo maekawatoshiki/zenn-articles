@@ -40,8 +40,9 @@ Spill cost については後述することになると思いますが、簡単
 [`LiveIntervalUnion.h`](https://github.com/llvm/llvm-project/blob/af4da4f995f8aaaa30aee6fcd598c3c07ecaff89/llvm/include/llvm/CodeGen/LiveIntervalUnion.h#L42) に定義されており、お互いに干渉しない複数の `LiveInterval` をひとまとめにします。お互いに干渉しない点が重要で、これのおかげで一つの `LiveIntervalUnion` に一つの物理レジスタを割り当てることが可能になります。
 （例えば、`LiveRange`の説明で用いた画像を例にすると、`%a` と `%b` は互いに干渉するため、一つの `LiveIntervalUnion` に含めることは出来ません。）
 
-この `LiveIntervalUnion` はレジスタアロケータの中でも重要な要素の一つで、実際にレジスタを割り当てている張本人と言っても過言ではありません。
-ここで少し、実際に割り当てを行っているコードを見てみましょう。（誤解のないように言うと、このコード以外にも割り当てに関係する部分はまだ沢山あります。特に `Greedy` アロケータはこのコード以外の比重が大きいです）
+この `LiveIntervalUnion` はレジスタアロケータの中でも重要な要素の一つで、特に `LiveIntervalUnion::Query::collectInterferingVRegs` というメソッドはレジスタ同士の生存区間が干渉するか調べます。
+ここで少しだけこのメソッドのコードを覗いてみて、この章を終わりたいと思います。
+（誤解のないように言うと、実はこのメソッドが毎度呼ばれるわけではありません。もっと高速な干渉チェック機構もあるのですが、話があまりにも突散らかりすぎるのでここでは語りません。）
 
 以下からコードを引っ張ってきました。コメントを適宜書き加えています。
 https://github.com/llvm/llvm-project/blob/af4da4f995f8aaaa30aee6fcd598c3c07ecaff89/llvm/lib/CodeGen/LiveIntervalUnion.cpp#L154-L189
