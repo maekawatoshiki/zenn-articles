@@ -1,5 +1,5 @@
 ---
-title: "LLVMのレジスタアロケータの構造"
+title: "準備"
 ---
 
 # LLVMのレジスタアロケータの構造
@@ -19,12 +19,15 @@ title: "LLVMのレジスタアロケータの構造"
 [`LiveInterval.h`](https://github.com/llvm/llvm-project/blob/112aafcaf425dca901690ca823d25607e5795263/llvm/include/llvm/CodeGen/LiveInterval.h#L157)に定義されており、あるレジスタやスタックスロットの生存区間を表現します。
 そもそも生存区間が何なのかは、以下の画像を見ればわかると思います。
 
-<!-- ある値が定義されてから最後に使われるまで -->
-
 基本ブロックを一列に並べたとき、ある値が定義されてから最後に使われるまでが生存区間です。
 このとき、制御フローによっては生存区間が複数に分割されることがあります。（画像では `%a` が該当）
 これら区間の一つひとつは `Segment` と呼ばれています。つまり、生存区間（`LiveRange`）は`Segment`のリストです。
 
 ![live range](/images/liverange.png)
 
+### `LiveInterval` クラス
+
+[`LiveInterval.h`](https://github.com/llvm/llvm-project/blob/112aafcaf425dca901690ca823d25607e5795263/llvm/include/llvm/CodeGen/LiveInterval.h#L680) に定義されており、`LiveRange` に加えてどのレジスタ（or スタックスロット）の生存区間を表しているのか、Spill cost はどれほどなのかといった情報を保持します。
+Spill cost については後述することになると思いますが、簡単に言えばそのレジスタをスピルすると、どれほどメモリアクセスが増えることになるのかを表します。
+複数の基本ブロックにまたがって複数回使用されているようなレジスタの Spill cost は高くなりがちです。
 
