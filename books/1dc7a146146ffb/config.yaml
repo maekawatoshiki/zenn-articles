@@ -6,7 +6,7 @@ price: 0 # 有料の場合200〜5000
 # 本に含めるチャプターを順番に並べましょう
 chapters:
   - intro
-  - entire_structure_of_llvm_ra
+  - prepare
   - basic
   - greedy
   - reference
