@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/maekawatoshiki/zenn-articles#readme",
   "dependencies": {
-    "zenn-cli": "^0.1.61"
+    "zenn-cli": "^0.1.108"
   }
 }
