@@ -3,7 +3,7 @@ title: "RV64G環境向けにCPythonをビルドする"
 emoji: "🐍"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["python", "riscv"]
-published: false
+published: true
 ---
 
 RISC-V（RV64G）環境でCPython（3.12.4）を利用する機会があったため，ビルド手順をまとめました．
