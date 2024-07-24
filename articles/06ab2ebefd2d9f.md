@@ -15,7 +15,6 @@ RISC-V（RV64G）環境でCPython（3.12.4）を利用する機会があった�
 
 
 ```bash
-
 #!/bin/sh -eux
 
 export RISCV=${RISCV:-$HOME/riscv}
@@ -119,7 +118,6 @@ export LDFLAGS="-mcmodel=medany -L$PWD/zlib/target/lib -L$PWD/libffi/target/lib 
 
 git clone https://github.com/python/cpython --depth 1 --branch v3.12.4
 cd cpython
-
 
 cat <<EOF > $CONFIG_SITE
 ac_cv_file__dev_ptmx=no
